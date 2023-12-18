@@ -1,0 +1,38 @@
+theme = "monokai_pro_octagon"
+
+[editor]
+line-number = "absolute"
+mouse = true
+cursorline = true
+color-modes = true
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-modification-indicator", "file-name", "version-control"]
+right =  ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "|"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.indent-guides]
+render = true
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
+
+[keys.normal]
+"C-/" = "toggle_comments"
+C-s = ":w"
+"ret" = ["open_below", "normal_mode"]
+"backspace" = ["delete_selection_noyank", "move_char_left"]
+
+[editor.soft-wrap]
+enable = true
