@@ -1,15 +1,16 @@
-theme = "monokai_pro_octagon"
+theme = "rose_pine_moon"
 
 [editor]
-line-number = "absolute"
+line-number = "relative"
 mouse = true
 cursorline = true
 color-modes = true
 true-color = true
+bufferline = 'multiple'
 
 [editor.statusline]
-left = ["mode", "spinner"]
-center = ["file-modification-indicator", "file-name", "version-control"]
+left = ["mode", "spinner", "version-control"]
+center = ["file-modification-indicator", "file-name"]
 right =  ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
 separator = "|"
 
@@ -31,9 +32,20 @@ newline = "none"
 
 [keys.normal]
 "C-/" = "toggle_comments"
-C-s = ":w"
+"C-s" = ":w"
 "ret" = ["open_below", "normal_mode"]
 "backspace" = ["delete_selection_noyank", "move_char_left"]
+"C-," = "goto_previous_buffer"
+"C-." = "goto_next_buffer"
+"C-w" = ":buffer-close"
+"A-/" = "repeat_last_motion"
+A-x = "extend_to_line_bounds"
+X = ["extend_line_up", "extend_to_line_bounds"]
+C-g = ":sh tmux popup -d \"#{pane_current_path}\" -xC -yC -w80% -h80% -E lazygit"
+
+[keys.select]
+A-x = "extend_to_line_bounds"
+X = ["extend_line_up", "extend_to_line_bounds"]
 
 [editor.soft-wrap]
 enable = true
