@@ -25,10 +25,10 @@ sudo install lazygit /usr/local/bin
 
 # Tmux
 apt install tmux
-
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux source ~/.config/tmux/tmux.conf
+[CTRL-B] [I]
 
-# Config
-git clone https://github.com/interphased/helix-config ~/
-
+# Config goes in ~/
+git clone https://github.com/interphased/helix-config
 ```
