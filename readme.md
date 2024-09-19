@@ -15,7 +15,7 @@ curl -L https://bit.ly/n-install | bash
 n lts
 
 # Language servers (additional servers: https://github-wiki-see.page/m/helix-editor/helix/wiki/How-to-install-the-default-language-servers)
-npm install -g vscode-langservers-extracted typescript-language-server typescript eslint prettier
+npm install -g vscode-langservers-extracted typescript-language-server typescript eslint prettier @tailwindcss/language-server @olrtg/emmet-language-server
 
 # Lazygit
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')

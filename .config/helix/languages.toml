@@ -1,77 +1,136 @@
+# [[language]]
+# name = "javascript"
+# formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+# auto-format = true
+
+# [[language]]
+# name = "typescript"
+# formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+# auto-format = true
+
 [[language]]
-name = "rust"
-scope = "source.rust"
-injection-regex = "rust"
-file-types = ["rs"]
-roots = ["Cargo.toml", "Cargo.lock"]
+name = "svelte"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
-comment-token = "//"
-language-server = { command = "rust-analyzer" }
-indent = { tab-width = 4, unit = "    " }
 
-[language.auto-pairs]
-'(' = ')'
-'{' = '}'
-'[' = ']'
-'"' = '"'
-'`' = '`'
+[[language]]
+name = "vue"
+auto-format = true
+scope = "source.vue"
+injection-regex = "vue"
+file-types = ["vue"]
+language-servers = ["volar", "eslint"]
+formatter = { command = "prettier", args = ["--parser", "vue"] }
+roots = ["package.json", "vue.config.js", ".prettierrc.json"]
 
-[language-server.eslint]
-command = "vscode-eslint-language-server"
+[language-server.volar]
+command = "vue-language-server"
 args = ["--stdio"]
 
-[language-server.eslint.config]
-codeActionsOnSave = { mode = "all", "source.fixAll.eslint" = true }
-format = { enable = true }
-nodePath = ""
-quiet = false
-rulesCustomizations = []
-run = "onType"
-validate = "on"
-experimental = {}
-problems = { shortenToSingleLine = false }
-
-[language-server.eslint.config.codeAction]
-disableRuleComment = { enable = true, location = "separateLine" }
-showDocumentation = { enable = false }
-
-[language-server.vscode-json-language-server.config]
-json = { validate = { enable = true }, format = { enable = true } }
-provideFormatter = true
-
-[language-server.vscode-css-language-server.config]
-css = { validate = { enable = true } }
-scss = { validate = { enable = true } }
-less = { validate = { enable = true } }
-provideFormatter = true
+[language-server.volar.config]
+typescript = { tsdk = "./node_modules/typescript/lib" }
 
 [[language]]
 name = "typescript"
-language-servers = [ "typescript-language-server", "eslint" ]
-# formatter = { command = "eslint", args = [ "--fix" ] }
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+scope = "source.ts"
+injection-regex = "(ts|typescript)"
+language-servers = [{except-features = ["format"], name = "typescript-language-server"}, "tailwindcss-ls", "eslint", "emmet-ls"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json", ""]
+file-types = ["ts", "mts", "cts"]
+formatter = { command = 'prettier', args = ["--stdin-filepath", "file.ts"] }
 auto-format = true
 
 [[language]]
+language-servers = [{except-features = ["format"], name = "typescript-language-server"}, "tailwindcss-ls", "eslint", "emmet-ls"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
 name = "javascript"
-language-servers = [ "typescript-language-server", "eslint" ]
-# formatter = { command = "eslint", args = [ "--fix" ] }
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+scope = "source.js"
+injection-regex = "(js|javascript)"
+file-types = ["js", "mjs", "cjs"]
+formatter = { command = 'prettier', args = ["--stdin-filepath", "file.js"] }
+auto-format = true
+
+[[language]]
+language-servers = [{except-features = ["format"], name = "typescript-language-server"}, "tailwindcss-ls", "eslint", "emmet-ls"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
+name = "jsx"
+scope = "source.jsx"
+injection-regex = "jsx"
+file-types = ["jsx"]
+formatter = { command = 'prettier', args = ["--stdin-filepath", "file.jsx"] }
+indent = { tab-width = 4, unit = "\t" }
+auto-format = true
+
+[[language]]
+language-servers = [{except-features = ["format"], name = "typescript-language-server"}, "tailwindcss-ls" , "eslint", "emmet-ls"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
+name = "tsx"
+scope = "source.tsx"
+injection-regex = "(tsx)" # |typescript
+file-types = ["tsx"]
+formatter = { command = 'prettier', args = ["--stdin-filepath", "file.tsx"] }
 auto-format = true
 
 [[language]]
 name = "html"
-language-servers = [ "vscode-html-language-server" ]
-formatter = { command = 'prettier', args = ["--parser", "html"] }
+scope = "text.html.basic"
+injection-regex = "html"
+file-types = ["html"]
+language-servers = ["tailwindcss-ls","emmet-ls", "vscode-html-language-server"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
 auto-format = true
 
 [[language]]
+name = "erb"
+language-servers = ["tailwindcss-ls", "vscode-html-language-server"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
+
+[language-server.tailwindcss-ls]
+config = { userLanguages = { erb = "html", "*.html.erb" = "html" } }
+
+[[language]]
 name = "css"
-language-servers = [ "vscode-css-language-server" ]
-formatter = { command = 'prettier', args = ["--parser", "css"] }
+scope = "source.css"
+injection-regex = "css"
+file-types = ["css"]
+language-servers = ["tailwindcss-ls", "emmet-ls", "vscode-css-language-server"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
 auto-format = true
 
-# [[language]]
-# name = "svelte"
-# formatter = { command = 'prettier', args = ["--parser", "typescript"] }
-# auto-format = true
+[language-server.eslint]
+args = ["--stdio"]
+command = "vscode-eslint-language-server"
+
+[language-server.emmet-ls]
+args = ["--stdio"]
+command = "emmet-language-server"
+
+[language-server.eslint.config]
+validate = "on"
+experimental = { useFlatConfig = false }
+rulesCustomizations = []
+run = "onType"
+problems = { shortenToSingleLine = false }
+nodePath = ""
+
+[language-server.eslint.config.codeAction]
+[language-server.eslint.config.codeAction.disableRuleComment]
+enable = true
+location = "separateLine"
+
+[language-server.eslint.config.codeAction.showDocumentation]
+enable = true
+
+[language-server.eslint.config.codeActionOnSave]
+enable = true
+mode = "fixAll"
+
+[language-server.eslint.config.workingDirectory]
+mode = "location"
+
+[language-server.typescript-language-server]
+args = ["--stdio"]
+command = "typescript-language-server"
+
+[language-server.typescript-language-server.config]
+documentFormatting = false
