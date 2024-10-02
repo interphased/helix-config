@@ -82,8 +82,13 @@ auto-format = true
 
 [[language]]
 name = "erb"
-language-servers = ["tailwindcss-ls", "vscode-html-language-server"]
+language-servers = ["tailwindcss-ls", "emmet-ls", { name = "vscode-html-language-server", except-features = [ "format" ] }]
 roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
+formatter = { command = "erb-format" , args = ["--stdin"] }
+
+[language.auto-pairs]
+'<' = '>'
+'%' = '%'
 
 [language-server.tailwindcss-ls]
 config = { userLanguages = { erb = "html", "*.html.erb" = "html" } }
