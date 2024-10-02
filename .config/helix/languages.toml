@@ -85,6 +85,7 @@ name = "erb"
 language-servers = ["tailwindcss-ls", "emmet-ls", { name = "vscode-html-language-server", except-features = [ "format" ] }]
 roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc"]
 formatter = { command = "bash" , args = ["-c", "erb-format --stdin | prettier --parser html"] }
+# formatter = { command = "bash" , args = ["-c", "f=erblinttemp_$RANDOM$RANDOM.html.erb; cat > $f; bundle e erblint -a $f &>/dev/null; cat $f; rm $f;"] }
 
 [language.auto-pairs]
 '<' = '>'
