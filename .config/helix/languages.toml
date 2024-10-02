@@ -21,7 +21,7 @@ injection-regex = "vue"
 file-types = ["vue"]
 language-servers = ["volar", "eslint"]
 formatter = { command = "prettier", args = ["--parser", "vue"] }
-roots = ["package.json", "vue.config.js", ".prettierrc.json"]
+roots = ["package.json", "vue.config.js", ".prettierrc"]
 
 [language-server.volar]
 command = "vue-language-server"
@@ -35,14 +35,14 @@ name = "typescript"
 scope = "source.ts"
 injection-regex = "(ts|typescript)"
 language-servers = [{except-features = ["format"], name = "typescript-language-server"}, "tailwindcss-ls", "eslint", "emmet-ls"]
-roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json", ""]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc", ""]
 file-types = ["ts", "mts", "cts"]
 formatter = { command = 'prettier', args = ["--stdin-filepath", "file.ts"] }
 auto-format = true
 
 [[language]]
 language-servers = [{except-features = ["format"], name = "typescript-language-server"}, "tailwindcss-ls", "eslint", "emmet-ls"]
-roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc"]
 name = "javascript"
 scope = "source.js"
 injection-regex = "(js|javascript)"
@@ -52,7 +52,7 @@ auto-format = true
 
 [[language]]
 language-servers = [{except-features = ["format"], name = "typescript-language-server"}, "tailwindcss-ls", "eslint", "emmet-ls"]
-roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc"]
 name = "jsx"
 scope = "source.jsx"
 injection-regex = "jsx"
@@ -63,7 +63,7 @@ auto-format = true
 
 [[language]]
 language-servers = [{except-features = ["format"], name = "typescript-language-server"}, "tailwindcss-ls" , "eslint", "emmet-ls"]
-roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc"]
 name = "tsx"
 scope = "source.tsx"
 injection-regex = "(tsx)" # |typescript
@@ -77,14 +77,14 @@ scope = "text.html.basic"
 injection-regex = "html"
 file-types = ["html"]
 language-servers = ["tailwindcss-ls","emmet-ls", "vscode-html-language-server"]
-roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc"]
 auto-format = true
 
 [[language]]
 name = "erb"
 language-servers = ["tailwindcss-ls", "emmet-ls", { name = "vscode-html-language-server", except-features = [ "format" ] }]
-roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
-formatter = { command = "erb-format" , args = ["--stdin"] }
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc"]
+formatter = { command = "bash" , args = ["-c", "erb-format --stdin | prettier --parser html"] }
 
 [language.auto-pairs]
 '<' = '>'
@@ -99,7 +99,7 @@ scope = "source.css"
 injection-regex = "css"
 file-types = ["css"]
 language-servers = ["tailwindcss-ls", "emmet-ls", "vscode-css-language-server"]
-roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc.json"]
+roots = ["tailwind.config.js","tailwind.config.cjs", ".prettierrc"]
 auto-format = true
 
 [language-server.eslint]
