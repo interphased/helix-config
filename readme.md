@@ -17,6 +17,10 @@ n lts
 # Language servers (additional servers: https://github-wiki-see.page/m/helix-editor/helix/wiki/How-to-install-the-default-language-servers)
 npm install -g vscode-langservers-extracted typescript-language-server typescript eslint prettier @tailwindcss/language-server @olrtg/emmet-language-server
 
+# Gems
+# erb_lint doesn't work great with helix right now, so use a local version of erb-formatter instead
+gem install erb-formatter
+
 # Lazygit
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
