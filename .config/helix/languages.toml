@@ -10,6 +10,7 @@
 
 [[language]]
 name = "svelte"
+language-servers = [{except-features = ["format"], name = "typescript-language-server"}, "svelteserver", "tailwindcss-ls", "eslint", "emmet-ls"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
